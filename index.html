@@ -2203,20 +2203,8 @@ fetch('https://raw.githubusercontent.com/Hammerking1000/portfolio-data/main/port
             renderPortfolio();
         });
 }
-
-// Then at the BOTTOM of your script, in DOMContentLoaded:
-document.addEventListener('DOMContentLoaded', function() {
-    initParticles();
-    initScrollAnimations();
-    initSmoothScrolling();
-    initNavbarScroll();
-    initParallax();
-    
-    // Load portfolio from GitHub
-    loadPortfolioFromGitHub();
-});
-
-               // ===========================================
+        
+// ===========================================
 // ADMIN SYSTEM JAVASCRIPT v2
 // ===========================================
 
@@ -2588,21 +2576,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    // Load projects from localStorage if they exist
-    const stored = localStorage.getItem('portfolioProjects');
-    if (stored) {
-        try {
-            const loadedProjects = JSON.parse(stored);
-            // Update the projects object
-            projects = loadedProjects;
-            // Re-render the portfolio with loaded data
-            renderPortfolio();
-        } catch (e) {
-            console.error('Error loading projects from localStorage:', e);
-        }
-    }
-});
 
 console.log('Admin system v2 loaded. Passcode: 1234');
         // =====================================================
@@ -2754,6 +2727,7 @@ function startThumbnailCycle(projectId) {
             clearInterval(thumbnailIntervals[projectId]);
         }
     }, 3000);
+}
     
         // =====================================================
         // SCROLL ANIMATIONS
