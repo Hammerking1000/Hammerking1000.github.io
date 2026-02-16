@@ -2231,41 +2231,22 @@ function renderPortfolio() {
         delayIndex++;
         
         const item = document.createElement('div');
-        item.className = `liquidGlass-wrapper portfolio-item scroll-animate delay-${Math.min(delayIndex, 10)}`;
-        item.setAttribute('data-project', projectId);
-        item.onclick = () => openModal(projectId);
-        
-        item.innerHTML = `
-            <div class="liquidGlass-effect"></div>
-            <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
-            <div class="liquidGlass-text" style="width: 100%;">
-                <div class="portfolio-image">
-                    <div class="portfolio-image-slider" data-project="${projectId}"></div>
-                    <div class="portfolio-image-indicators" data-project="${projectId}"></div>
-                    <span class="portfolio-image-count">${project.images.length} ${project.images.length === 1 ? 'image' : 'images'}</span>
-                </div>
-                <div class="portfolio-content">
-                    <h3>${project.title}</h3>
-                    <p>${project.description.replace(/<[^>]*>/g, '').substring(0, 120)}...</p>
-                    <span class="portfolio-link">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </div>
-        `;
-        setTimeout(() => {
-    // Re-initialize thumbnail sliders
-    Object.keys(projects).forEach(projectId => {
-        initThumbnailSlider(projectId);
-    });
-    
-    if (typeof initScrollAnimations === 'function') {
-        initScrollAnimations();
-    }
-}, 100);
+        // ... all your item setup code ...
         
         grid.appendChild(item);
-    });
+    });  // ← forEach CLOSES HERE
     
+    // NOW put the setTimeout AFTER the forEach
+    setTimeout(() => {
+        Object.keys(projects).forEach(projectId => {
+            initThumbnailSlider(projectId);
+        });
+        
+        if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+        }
+    }, 100);
+}
 
 // Save projects to localStorage
 function saveProjectsToStorage() {
