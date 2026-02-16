@@ -2585,23 +2585,6 @@ console.log('Admin system v2 loaded. Passcode: 1234');
         let thumbnailIntervals = {};
         let thumbnailIndices = {};
         
-// =====================================================
-// INITIALIZATION - SINGLE CONSOLIDATED LISTENER
-// =====================================================
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Portfolio initializing...');
-    
-    // Initialize visual effects
-    initParticles();
-    initScrollAnimations();
-    initSmoothScrolling();
-    initNavbarScroll();
-    initParallax();
-    
-    // Load portfolio from GitHub (which will call renderPortfolio)
-    loadPortfolioFromGitHub();
-});
-        
         // =====================================================
         // PARTICLE SYSTEM
         // =====================================================
@@ -2982,6 +2965,22 @@ function startThumbnailCycle(projectId) {
                 }
             }
         }
+    // =====================================================
+// INITIALIZATION - SINGLE CONSOLIDATED LISTENER
+// =====================================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Portfolio initializing...');
+    
+    // Initialize visual effects
+    initParticles();
+    initScrollAnimations();
+    initSmoothScrolling();
+    initNavbarScroll();
+    initParallax();
+    
+    // Load portfolio from GitHub (which will call renderPortfolio)
+    loadPortfolioFromGitHub();
+});
     </script>
     
     <!-- ===========================================
