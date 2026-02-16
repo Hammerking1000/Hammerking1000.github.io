@@ -2252,12 +2252,7 @@ function renderPortfolio() {
                 </div>
             </div>
         `;
-        
-        grid.appendChild(item);
-    });
-    
-    // Re-initialize thumbnail sliders and scroll animations after rendering
-setTimeout(() => {
+        setTimeout(() => {
     // Re-initialize thumbnail sliders
     Object.keys(projects).forEach(projectId => {
         initThumbnailSlider(projectId);
@@ -2267,6 +2262,10 @@ setTimeout(() => {
         initScrollAnimations();
     }
 }, 100);
+        
+        grid.appendChild(item);
+    });
+    
 
 // Save projects to localStorage
 function saveProjectsToStorage() {
@@ -2586,17 +2585,22 @@ console.log('Admin system v2 loaded. Passcode: 1234');
         let thumbnailIntervals = {};
         let thumbnailIndices = {};
         
-        // =====================================================
-        // INITIALIZATION
-        // =====================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            initParticles();
-            initThumbnailSliders();
-            initScrollAnimations();
-            initSmoothScrolling();
-            initNavbarScroll();
-            initParallax();
-        });
+// =====================================================
+// INITIALIZATION - SINGLE CONSOLIDATED LISTENER
+// =====================================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Portfolio initializing...');
+    
+    // Initialize visual effects
+    initParticles();
+    initScrollAnimations();
+    initSmoothScrolling();
+    initNavbarScroll();
+    initParallax();
+    
+    // Load portfolio from GitHub (which will call renderPortfolio)
+    loadPortfolioFromGitHub();
+});
         
         // =====================================================
         // PARTICLE SYSTEM
