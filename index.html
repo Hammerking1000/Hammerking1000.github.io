@@ -2213,31 +2213,60 @@ const PASSCODE = '1234';
 let isAdmin = false;
 let editingProjectId = null;
 
-// IMPORTANT: Change your projects declaration from:
-//   const projects = { ... }
-// To:
-//   let projects = JSON.parse(localStorage.getItem('portfolioProjects')) || { ... }
+        // COMPLETE renderPortfolio() function
 
-// Function to render the entire portfolio
 function renderPortfolio() {
-    const grid = document.getElementById('portfolio-grid');
-    if (!grid) return;
+    console.log('🎨 renderPortfolio called');
     
+    const grid = document.getElementById('portfolio-grid');
+    if (!grid) {
+        console.error('❌ Portfolio grid not found!');
+        return;
+    }
+    
+    console.log('✅ Grid found, clearing content');
     grid.innerHTML = '';
+    
+    console.log('📦 Projects to render:', Object.keys(projects).length);
     
     let delayIndex = 0;
     Object.keys(projects).forEach(projectId => {
         const project = projects[projectId];
         delayIndex++;
         
+        console.log(`Creating item for: ${projectId}`);
+        
         const item = document.createElement('div');
-        // ... all your item setup code ...
+        item.className = `liquidGlass-wrapper portfolio-item scroll-animate delay-${Math.min(delayIndex, 10)}`;
+        item.setAttribute('data-project', projectId);
+        item.onclick = () => openModal(projectId);
+        
+        item.innerHTML = `
+            <div class="liquidGlass-effect"></div>
+            <div class="liquidGlass-tint"></div>
+            <div class="liquidGlass-shine"></div>
+            <div class="liquidGlass-text" style="width: 100%;">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-slider" data-project="${projectId}"></div>
+                    <div class="portfolio-image-indicators" data-project="${projectId}"></div>
+                    <span class="portfolio-image-count">${project.images.length} ${project.images.length === 1 ? 'image' : 'images'}</span>
+                </div>
+                <div class="portfolio-content">
+                    <h3>${project.title}</h3>
+                    <p>${project.description.replace(/<[^>]*>/g, '').substring(0, 120)}...</p>
+                    <span class="portfolio-link">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </div>
+        `;
         
         grid.appendChild(item);
-    });  // ← forEach CLOSES HERE
+    });
     
-    // NOW put the setTimeout AFTER the forEach
+    console.log('✅ All items added to grid');
+    
+    // Re-initialize thumbnail sliders and scroll animations after rendering
     setTimeout(() => {
+        console.log('Initializing sliders...');
         Object.keys(projects).forEach(projectId => {
             initThumbnailSlider(projectId);
         });
@@ -2245,9 +2274,9 @@ function renderPortfolio() {
         if (typeof initScrollAnimations === 'function') {
             initScrollAnimations();
         }
+        console.log('✅ Sliders initialized');
     }, 100);
 }
-
 // Save projects to localStorage
 function saveProjectsToStorage() {
     localStorage.setItem('portfolioProjects', JSON.stringify(projects));
