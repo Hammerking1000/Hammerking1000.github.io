@@ -748,7 +748,7 @@
                 <div class="liquidGlass-effect"></div>
                 <div class="liquidGlass-tint"></div>
                 <div class="liquidGlass-shine"></div>
-                <span class="liquidGlass-text">© 2026, Matthew Kelly. Made with passion and an attempt at precision.</span>
+                <span class="liquidGlass-text">©2026, Matthew Kelly. Made with passion, and an attempt at precision.</span>
             </div>
         </div>
     </footer>
@@ -809,7 +809,7 @@
                         <input type="text" class="admin-form-input" id="project-title" placeholder="My Amazing Project">
                     </div>
                     <div class="admin-form-group">
-                        <label class="admin-form-label">Description (HTML allowed)</label>
+                        <label class="admin-form-label">Description (can be HTML)</label>
                         <textarea class="admin-form-textarea" id="project-description" placeholder="A detailed description..."></textarea>
                     </div>
                     <div class="admin-form-group">
@@ -817,7 +817,7 @@
                         <div class="admin-images-list" id="images-list">
                             <div class="admin-image-item">
                                 <input type="url" class="admin-form-input image-url-input" placeholder="https://example.com/image.jpg">
-                                <button class="admin-btn admin-btn-upload" onclick="triggerImageUpload(this)">📁 Upload</button>
+                                <button class="admin-btn admin-btn-upload" onclick="triggerImageUpload(this)">Upload</button>
                                 <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event,this)">
                             </div>
                         </div>
@@ -836,7 +836,7 @@
             </div>
             <div class="admin-section">
                 <h3>Backup & Restore</h3>
-                <button class="admin-btn admin-btn-add" onclick="exportData()" style="background:#8b5cf6;">📥 Export Data</button>
+                <button class="admin-btn admin-btn-add" onclick="exportData()" style="background:#8b5cf6;">Export Data</button>
                 <button class="admin-btn admin-btn-add" onclick="document.getElementById('import-file').click()" style="background:#f59e0b;margin-top:12px;">📤 Import Data</button>
                 <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)">
             </div>
@@ -1068,10 +1068,10 @@
     function handleImageUpload(event, fileInput) {
         const file = event.target.files[0];
         if (!file) return;
-        if (file.size > 5 * 1024 * 1024) { alert('Image is too large. Please use an image under 5MB.'); return; }
+        if (file.size > 5 * 1024 * 1024) { alert('Image is too fat. Please use an image under 5MB! thankssss.'); return; }
         const button = fileInput.previousElementSibling;
         const orig = button.textContent;
-        button.textContent = '⏳ Loading...'; button.disabled = true;
+        button.textContent = 'Loading...'; button.disabled = true;
         const reader = new FileReader();
         reader.onload = e => {
             fileInput.parentElement.querySelector('.image-url-input').value = e.target.result;
