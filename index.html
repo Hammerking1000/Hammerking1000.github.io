@@ -398,6 +398,21 @@
         @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
         @keyframes scrollWheel { 0%, 100% { opacity: 1; top: 8px; } 50% { opacity: 0.3; top: 18px; } }
 
+        .hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.4; /* Adjust darkness - play with 0.2 to 0.6 */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
         /*  SKILLS */
         .skills-section { padding: 40px 0 100px; }
         .skills-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
@@ -606,7 +621,13 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-content">
+                 <section class="hero" id="home">
+    <video autoplay muted loop playsinline class="hero-video-bg">
+        <source src="your-video.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-content">
+        <!-- your existing content -->
                 <h1 class="scroll-animate delay-1">Graphic Designer &<br><span class="highlight">Drafting Engineer</span></h1>
                 <p class="scroll-animate delay-2">Bridging creativity and precision through 3D visualization, rendering, web design, and graphic design for clients who demand excellence in all things visual.</p>
                 <div class="hero-buttons scroll-animate delay-3">
@@ -1382,10 +1403,8 @@
     //  INIT
     // ==========================================================
     document.addEventListener('DOMContentLoaded', () => {
-        initParticles();
         initSmoothScrolling();
         initNavbarScroll();
-        initParallax();
         initScrollAnimations();
         renderPortfolio();
     });
