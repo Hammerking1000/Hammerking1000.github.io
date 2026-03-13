@@ -338,15 +338,16 @@
         @keyframes scrollWheel { 0%, 100% { opacity: 1; top: 8px; } 50% { opacity: 0.3; top: 18px; } }
 
         .hero-video-bg {
-        position: absolute;
+        position: fixed;  /* ← NOT absolute! */
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;  /* ← THIS IS THE KEY! */
+        width: 100vw;     /* Full width */
+        height: 100vh;    /* Full height */
+        object-fit: cover;
         object-position: center;
-        z-index: 0;
-        opacity: 0.5; /* Adjust darkness 0.3-0.7 */
+        z-index: -1;      /* Behind everything */
+        opacity: 0.5;
+        pointer-events: none;
         }
 
         .hero-content {
@@ -482,6 +483,9 @@
     </style>
 </head>
 <body>
+     <video autoplay muted loop playsinline class="hero-video-bg">
+       <source src="background.mp4" type="video/mp4">
+   </video>
     <!-- SVG Filters for Liquid Glass Effect -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
@@ -551,9 +555,6 @@
     <section class="hero" id="hero">
         <div class="container">
                  <section class="hero" id="home">
-    <video autoplay muted loop playsinline class="hero-video-bg">
-       <source src="background.mp4" type="video/mp4">
-   </video>
     
     <div class="hero-content">
         <!-- your existing content -->
