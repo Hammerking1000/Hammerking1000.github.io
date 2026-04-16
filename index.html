@@ -135,9 +135,7 @@
             .admin-btn-upload, .admin-btn-remove { flex: 1; }
         }
 
-        /* ===========================================
-           BASE STYLES
-        =========================================== */
+        /* BASE STYLES */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -146,10 +144,7 @@
             --transition-smooth: cubic-bezier(0.6, 0, 0.2, 1);
         }
 
-        /* LIQUID GLASS SYSTEM (WebGL-backed)
-           Each .liquidGlass-wrapper gets:
-           - a <canvas> injected as the bottom layer (WebGL shader)
-           - the tint/shine/text layers on top */
+        /* LIQUID GLASS SYSTEM */
         .liquidGlass-wrapper {
             position: relative;
             display: flex;
@@ -316,7 +311,7 @@
         position: relative;
         min-height: 100vh;
         width: 100%;
-        overflow: hidden; /* Prevents video overflow */
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -336,14 +331,14 @@
         @keyframes scrollWheel { 0%, 100% { opacity: 1; top: 8px; } 50% { opacity: 0.3; top: 18px; } }
 
         .hero-video-bg {
-        position: fixed;  /* ← NOT absolute! */
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;     /* Full width */
-        height: 100vh;    /* Full height */
+        width: 100vw;
+        height: 100vh;
         object-fit: cover;
         object-position: center;
-        z-index: -1;      /* Behind everything */
+        z-index: -1;
         opacity: 0.5;
         pointer-events: none;
         }
@@ -481,9 +476,7 @@
     </style>
 </head>
 <body>
-     <video autoplay muted loop playsinline class="hero-video-bg">
-       <source src="background.mp4" type="video/mp4">
-   </video>
+    <img src="https://irp.cdn-website.com/995b1bee/dms3rep/multi/Ocean.gif" alt="" class="hero-video-bg">
     <!-- SVG Filters for Liquid Glass Effect -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
@@ -773,6 +766,7 @@
             title: 'Professional 3D Work',
             description: 'A comprehensive collection of 3D modeling and architectural visualization work. Each piece demonstrates proficiency in CAD modeling, texturing, lighting, and photorealistic rendering using Blender. These visualizations have significantly accelerated the design process for clients in the custom cabinetry industry.',
             images: [
+                'https://irp.cdn-website.com/995b1bee/dms3rep/multi/swrerddd.png',
                 'https://cdn.myportfolio.com/ab598fc3-5eaa-478b-b465-a04cf5e34d6e/8e5e2bf0-eb3f-4aed-b2be-542c57f759bf_rw_1920.png?h=b7aec4fbba7003c9cc651a89f0bdbd2d',
                 'https://cdn.myportfolio.com/ab598fc3-5eaa-478b-b465-a04cf5e34d6e/15ddff2f-d058-43b0-914b-90c7bac31183_rw_1200.png?h=97b80701af51c2752ff1ebda4db36c60',
                 'https://cdn.myportfolio.com/ab598fc3-5eaa-478b-b465-a04cf5e34d6e/d13af287-d52b-4d65-b819-8ca39fc20437_rw_1920.png?h=3d69a5c0cfb8cc883f75f2edbe8e4b7e',
